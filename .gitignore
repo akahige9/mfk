@@ -1,0 +1,8 @@
+# Build folders
+src/*/out/
+
+# Libraries
+*.so
+
+# Temp folder
+tmp/

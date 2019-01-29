@@ -1,0 +1,60 @@
+<args format='1.0' scope='/root' fixedCEL='/root' >
+  <group name='mantra13GlobalStatements' hideTitle='True' closed='True' groupInherit='False'>
+
+    <page name='Dicing' closed='True'>
+      <float name='shadingfactor' label='Shading Quality Multiplier' default='1.0'/>
+    </page>
+
+    <page name='Sampling' closed='True'>
+      <int name='samples' label='Pixel Samples' size='2' default='3,3' min='1' max='32' tupleSize='2'/>
+      <float name='jitter' label='Jitter' default='1.0' min='0.0' max='1.0'/>
+    </page>
+
+    <page name='Shading' closed='True'>
+      <float name='raybias' label='Raytracing Bias' default='0.001'/>
+      <int name='unshadedlimit' label='Ray Unshaded Limit' default='32' min='1' max='32'/>
+    </page>
+
+    <page name='Statistics' closed='True'>
+      <int name="vexprofile" label='VEX Profiling' default='0' widget='mapper'>
+        <hintdict name='options'>
+          <int name='No VEX Profiling' value='0'/>
+          <int name='Execution profiling' value='1'/>
+          <int name='Profiling and NAN detection' value='2'/>
+        </hintdict>
+      </int>
+      <int name='verbose' label='Verbose Level' default='0' min='0' max='5'/>
+    </page>
+
+    <page name='Render' closed='True'>
+
+      <string name='renderengine' label='Rendering Engine' default='raytrace' widget='mapper'>
+        <hintdict name="options">
+          <string name='Micropolygon Rendering' value='micropoly'/>
+          <string name='Ray Tracing' value='raytrace'/>
+          <string name='Micropolygon Physically Based Rendering' value='pbrmicropoly'/>
+          <string name='Physically Based Rendering' value='pbrraytrace'/>
+          <string name='Photon Map Generation' value='photon'/>
+        </hintdict>
+      </string>
+
+      <int name='rayquality' label='Enable Raytracing' default='1' widget='boolean'/>
+
+      <int name='usecacheratio' label='Cache Limit' default='1' widget='mapper'>
+        <hintdict name="options">
+          <int name='Fixed Size' value='0'/>
+          <int name='Proportion of Physical Memory' value='1'/>
+        </hintdict>
+      </int>
+
+      <float name='cacheratio' label='Cache Memory Ratio' default='0.25'
+       conditionalVisOp='equalTo' conditionalVisPath='../usecacheratio' conditionalVisValue='1'/>
+
+      <float name='cachesize' label='Cache Size (MB)' default='1000'
+        conditionalVisOp='equalTo' conditionalVisPath='../usecacheratio' conditionalVisValue='0'/>
+
+    </page>
+
+  </group>
+</args>
+
